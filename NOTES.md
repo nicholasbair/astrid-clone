@@ -22,11 +22,20 @@ Defaults to user who created
 
 Users need to be able to be associated to each other, e.g. I shouldn't be able to assign a task to any user.
 
-Permissions:
-  If I create a task, and assign it to a friend.  The only thing my friend should be able to do is accept, comment, and mark complete
-
 ## User stories
 ...
+
+## Routes
+index - marketing, link to signup/signin
+Logged in index should show all assigned and owned tasks that are assigned to others, organized by list
+Drill into each list '/lists/1' or maybe '/users/1/lists/2'
+
+## Authentication
+Index should be only unprotected route
+
+## Permissions
+User can CRUD lists and tasks
+Assigned user can mark task as complete and comment, but nothing else if he/she is not creator of task
 
 ## Crazy and Random Ideas
 - View as Kanban -> list level and task level
