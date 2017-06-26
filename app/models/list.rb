@@ -1,2 +1,6 @@
 class List < ActiveRecord::Base
+  belong_to :user
+  has_many :tasks
+
+  enum :status [:incomplete, :complete]
 end
