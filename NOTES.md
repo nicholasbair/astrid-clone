@@ -22,6 +22,9 @@ Defaults to user who created
 
 Users need to be able to be associated to each other, e.g. I shouldn't be able to assign a task to any user.
 
+Permissions:
+  If I create a task, and assign it to a friend.  The only thing my friend should be able to do is accept, comment, and mark complete
+
 ## User stories
 ...
 
