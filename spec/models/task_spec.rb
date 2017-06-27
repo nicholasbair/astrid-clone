@@ -8,7 +8,20 @@ RSpec.describe Task, type: :model do
   end
 
   it "belongs to list" do
+    expect(@task.list).to eq(@list)
+  end
+
+  it "belongs to user" do
     expect(@task.user).to eq(@user)
+  end
+
+  it "defaults to incomplete" do
+    expect(@task.incomplete?).to eq(true)
+  end
+
+  it "can be complete" do
+    @task.status = "complete"
+    expect(@task.complete?).to eq(true)
   end
 
 end
