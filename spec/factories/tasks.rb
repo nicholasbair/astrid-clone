@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :list do
+  factory :task do
     content "Test Task"
 
     factory :completed_task do
