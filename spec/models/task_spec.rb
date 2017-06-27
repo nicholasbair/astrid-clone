@@ -7,12 +7,16 @@ RSpec.describe Task, type: :model do
     @task = @list.tasks.create(content: 'something something task')
   end
 
-  it "belongs to list" do
-    expect(@task.list).to eq(@list)
-  end
+  context 'associations' do
 
-  it "belongs to user" do
-    expect(@task.user).to eq(@user)
+    it "belongs to list" do
+      expect(@task.list).to eq(@list)
+    end
+
+    it "belongs to user" do
+      expect(@task.user).to eq(@user)
+    end
+  
   end
 
   it "defaults to incomplete" do

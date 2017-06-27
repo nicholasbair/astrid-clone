@@ -7,12 +7,16 @@ RSpec.describe List, type: :model do
     @task = @list.tasks.create(content: 'something something task')
   end
 
-  it "belongs to user" do
-    expect(@list.user).to eq(@user)
-  end
+  context 'associations' do
 
-  it "has many tasks" do
-    expect(@list.tasks.size).to eq(1)
+    it "belongs to user" do
+      expect(@list.user).to eq(@user)
+    end
+
+    it "has many tasks" do
+      expect(@list.tasks.size).to eq(1)
+    end
+  
   end
 
   it "defaults to incomplete" do
@@ -25,6 +29,18 @@ RSpec.describe List, type: :model do
 
   it "has a title" do
     expect(@list.title).to eq("sample list")
+  end
+
+  it "responds to #complete" do
+    @list = create(:list)
+    @list.tasks.create(content: 'something something task', status: 'complete')
+    expect(@list.tasks.complete.count).to eq(1)
+  end
+
+  it "responds to #incomplete" do
+    @list = create(:list)
+    @list.tasks.create(content: 'something something task')
+    expect(@list.tasks.incomplete.count).to eq(1)
   end
 
 end
