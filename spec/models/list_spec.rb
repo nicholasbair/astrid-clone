@@ -16,7 +16,21 @@ RSpec.describe List, type: :model do
     it "has many tasks" do
       expect(@list.tasks.size).to eq(1)
     end
-  
+
+  end
+
+  context 'validations' do
+
+    it "must have a title" do
+      @list2 = List.new
+      expect { @list2.save }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it "title is unique in the scope of the parent user" do
+      @list2 = @user.lists.build(title: 'sample list')
+      expect { @list2.save }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
   end
 
   it "defaults to incomplete" do

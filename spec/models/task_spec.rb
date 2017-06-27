@@ -16,7 +16,21 @@ RSpec.describe Task, type: :model do
     it "belongs to user" do
       expect(@task.user).to eq(@user)
     end
-  
+
+  end
+
+  context 'validations' do
+
+    it "must have content" do
+      @task2 = Task.new
+      expect { @task2.save }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it "content is unique in the scope of the parent list" do
+      @task2 = @list.tasks.build(content: 'something something task')
+      expect { @task2.save }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
   end
 
   it "defaults to incomplete" do

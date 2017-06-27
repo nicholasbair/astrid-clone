@@ -18,7 +18,19 @@ RSpec.describe User, type: :model do
       expect(@user.lists.count).to eq(1)
       expect(@user.lists.last.tasks.count).to eq(1)
     end
-  
+
+  end
+
+  context 'validations' do
+
+    it "username is unique" do
+      expect{ create(:user) }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it "email is unique" do
+      expect{ create(:user) }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
   end
 
   it "has an email" do
