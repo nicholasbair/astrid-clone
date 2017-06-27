@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before(:each) do
-    @user = User.create(email: 'user@example.com', password: 'password', username: 'user123')
+    @user = create(:user)
   end
 
   it "has many lists" do

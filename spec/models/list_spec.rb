@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe List, type: :model do
   before(:each) do
-    @user = User.create(email: 'user@example.com', password: 'password', username: 'user123')
+    @user = create(:user)
     @list = @user.lists.create(title: 'sample list')
     @task = @list.tasks.create(content: 'something something task')
   end
@@ -16,12 +16,15 @@ RSpec.describe List, type: :model do
   end
 
   it "defaults to incomplete" do
-    expect(@list.incomplete?).to eq(true)
+    expect(create(:list).incomplete?).to eq(true)
   end
 
   it "can be complete" do
-    @list.status = "complete"
-    expect(@list.complete?).to eq(true)
+    expect(create(:completed_list).complete?).to eq(true)
+  end
+
+  it "has a title" do
+    expect(@list.title).to eq("sample list")
   end
 
 end

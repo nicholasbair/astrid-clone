@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Task, type: :model do
   before(:each) do
-    @user = User.create(email: 'user@example.com', password: 'password', username: 'user123')
+    @user = create(:user)
     @list = @user.lists.create(title: 'sample list')
     @task = @list.tasks.create(content: 'something something task')
   end
@@ -22,6 +22,10 @@ RSpec.describe Task, type: :model do
   it "can be complete" do
     @task.status = "complete"
     expect(@task.complete?).to eq(true)
+  end
+
+  it "has content" do
+    expect(@task.content).to eq("something something task")
   end
 
 end
