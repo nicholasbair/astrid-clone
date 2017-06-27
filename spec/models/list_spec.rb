@@ -15,4 +15,13 @@ RSpec.describe List, type: :model do
     expect(@list.tasks.size).to eq(1)
   end
 
+  it "defaults to incomplete" do
+    expect(@list.incomplete?).to eq(true)
+  end
+
+  it "can be complete" do
+    @list.status = "complete"
+    expect(@list.complete?).to eq(true)
+  end
+
 end
