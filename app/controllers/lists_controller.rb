@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  before_action :set_list, only: [:show, :edit]
+
   def index
   end
 
@@ -16,4 +18,10 @@ class ListsController < ApplicationController
 
   def delete
   end
+
+  private
+
+    def set_list
+      @list = List.find_by(:id => params[:id])
+    end
 end

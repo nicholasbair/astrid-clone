@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:show, :edit]
+
   def index
   end
 
@@ -16,4 +18,11 @@ class TasksController < ApplicationController
 
   def delete
   end
+
+  private
+
+    def set_task
+      @task = Task.find_by(:id => params[:id])
+    end
+
 end
