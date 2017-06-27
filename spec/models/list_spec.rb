@@ -23,12 +23,14 @@ RSpec.describe List, type: :model do
 
     it "must have a title" do
       @list2 = List.new
-      expect { @list2.save }.to raise_error(ActiveRecord::RecordInvalid)
+      @list2.save
+      expect(@list2.errors.size).to eq(1)
     end
 
     it "title is unique in the scope of the parent user" do
       @list2 = @user.lists.build(title: 'sample list')
-      expect { @list2.save }.to raise_error(ActiveRecord::RecordInvalid)
+      @list2.save
+      expect(@list2.errors.size).to eq(1)
     end
 
   end

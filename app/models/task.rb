@@ -3,4 +3,7 @@ class Task < ActiveRecord::Base
   has_one :user, :through => :list
 
   enum status: [:incomplete, :complete]
+
+  validates :content, :presence => true
+  validates :content, :uniqueness => { :scope => :list }
 end
