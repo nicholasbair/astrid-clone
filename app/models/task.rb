@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  belong_to :list
+  belongs_to :list
 
   enum :status [:incomplete, :complete]
 end
