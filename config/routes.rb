@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users, only: [:show] do
-    resources :lists, :tasks
+    resources :lists, only: [:show, :new]
   end
+
+  resources :lists, only: [:create, :show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
