@@ -1,6 +1,6 @@
 <%= @list.title %>
 <ul>
   <% @list.tasks.each do |task| %>
-    <li><%= task.content %></li>
+    <li><%= link_to task.content, task %></li>
   <% end %>
 </ul>

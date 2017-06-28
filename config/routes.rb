@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :lists
   end
 
+  resources :tasks
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
