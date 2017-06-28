@@ -14,6 +14,7 @@ class ListsController < ApplicationController
   end
 
   def create
+    # raise params.inspect
     @list = List.new(list_params)
 
     if @list.save
@@ -39,7 +40,7 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:title, :user_id)
+      params.require(:list).permit(:title, :user_id, :tasks_attributes => [:content])
     end
 
 end
