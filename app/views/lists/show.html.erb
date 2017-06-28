@@ -1,15 +1,19 @@
-<%= @list.title %>
+<%= link_to "<- Back my lists", user_lists_path(@list.user) %>
+
+
+<h1><%= @list.title %></h1>
 <ul>
   <% @list.tasks.each do |task| %>
     <li><%= link_to task.content, task %></li>
   <% end %>
 </ul>
 
+<h3>Add a task:</h3>
 <%= form_for [@list.user, @list] do |f| %>
   <%= f.hidden_field :user_id %>
   <%= f.fields_for :tasks, @list.tasks.build do |task_form| %>
     <%= task_form.label :content %>
     <%= task_form.text_field :content %>
   <% end %>
-  <%= f.submit %>
+  <%= f.submit "Add task" %>
 <% end %>
