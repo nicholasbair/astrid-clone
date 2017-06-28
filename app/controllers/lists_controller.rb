@@ -14,7 +14,6 @@ class ListsController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     @list = List.new(list_params)
 
     if @list.save
