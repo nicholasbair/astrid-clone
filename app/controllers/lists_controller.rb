@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit]
+  before_action :set_list, only: [:show, :edit, :update]
 
   def index
     @lists = List.where(:user_id => params[:user_id])
@@ -28,6 +28,8 @@ class ListsController < ApplicationController
   end
 
   def update
+    @list.update(list_params)
+    redirect_to user_list_path(@list.user_id, @list)
   end
 
   def delete
