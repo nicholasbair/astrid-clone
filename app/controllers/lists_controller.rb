@@ -9,15 +9,15 @@ class ListsController < ApplicationController
   end
 
   def new
-    user = User.find_by(:id => params[:user_id])
-    @list = user.lists.build
+    @user = User.find_by(:id => params[:user_id])
+    @list = @user.lists.build
   end
 
   def create
     @list = List.new(list_params)
 
     if @list.save
-      redirect_to @list
+      redirect_to user_list_path(@list.user_id, @list)
     else
       render :new
     end
@@ -39,7 +39,7 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:title)
+      params.require(:list).permit(:title, :user_id)
     end
 
 end

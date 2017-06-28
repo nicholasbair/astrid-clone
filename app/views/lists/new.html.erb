@@ -1,5 +1,7 @@
-<%= form_for @list do |f| %>
+<%= form_for [@user, @list] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id %>
   <%= f.submit %>
 <% end %>
