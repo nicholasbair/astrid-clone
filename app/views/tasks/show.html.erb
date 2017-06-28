@@ -1,1 +1,8 @@
+<%= link_to "<- Back to list", user_list_path(@task.list.user_id, @task.list) %>
+<br><br>
 <%= @task.content %>
+
+<%= form_for @task do |f| %>
+  <%= f.hidden_field :status, :value => "complete" %>
+  <%= f.submit "Mark complete" %>
+<% end %>
