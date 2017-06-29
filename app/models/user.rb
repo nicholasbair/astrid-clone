@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :lists
   has_many :tasks, :through => :lists
+
+  # All users with completed lists
+  # User.joins(:lists).where(lists: {status: 1})
+
+  def self.most_completed_tasks
+
+  end
+
 end

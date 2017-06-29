@@ -33,6 +33,24 @@ RSpec.describe User, type: :model do
 
   end
 
+  context 'class methods' do
+
+    it ".most_completed_tasks returns the user with most completed tasks" do
+      @list = @user.lists.create(title: 'sample list')
+      @list.tasks.create(content: 'something something task')
+      @list.tasks.create(content: 'another task')
+      @list.tasks.each { |task| task.status = "complete"; task.save }
+
+      @user2 = User.create(:username => "bob", :email => "bob@bob.bob", :password => "password")
+      @list2 = @user2.lists.create(title: 'sample list')
+      @list2.tasks.create(content: 'something something task')
+      @list2.tasks.create(content: 'another task')
+
+      expect(User.most_completed_tasks).to be(@user)
+    end
+
+  end
+
   it "has an email" do
     expect(@user.email).to be_truthy
   end
