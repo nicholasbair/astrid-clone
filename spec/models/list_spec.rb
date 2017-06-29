@@ -23,6 +23,7 @@ RSpec.describe List, type: :model do
 
     it "must have a title" do
       @list2 = List.new
+      @user.lists << @list2
       @list2.save
       expect(@list2.errors.size).to eq(1)
     end
@@ -43,27 +44,24 @@ RSpec.describe List, type: :model do
   end
 
   it "defaults to incomplete" do
-    expect(create(:list).incomplete?).to eq(true)
+    expect(@list.incomplete?).to eq(true)
   end
 
   it "can be complete" do
-    expect(create(:completed_list).complete?).to eq(true)
+    @list.status = "complete"
+    expect(@list.complete?).to eq(true)
   end
 
   it "has a title" do
     expect(@list.title).to eq("sample list")
   end
 
-  it "responds to #complete" do
-    @list = create(:list)
-    @list.tasks.create(content: 'something something task', status: 'complete')
-    expect(@list.tasks.complete.count).to eq(1)
+  it "responds to #complete?" do
+    expect(@list.complete?).to eq(false)
   end
 
   it "responds to #incomplete" do
-    @list = create(:list)
-    @list.tasks.create(content: 'something something task')
-    expect(@list.tasks.incomplete.count).to eq(1)
+    expect(@list.incomplete?).to eq(true)
   end
 
 end

@@ -22,7 +22,7 @@ RSpec.describe Task, type: :model do
   context 'validations' do
 
     it "must have content" do
-      @task2 = Task.new
+      @task2 = @list.tasks.build
       @task2.save
       expect(@task2.errors.size).to eq(1)
     end

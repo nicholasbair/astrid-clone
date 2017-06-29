@@ -5,6 +5,7 @@ class List < ActiveRecord::Base
   enum status: [:incomplete, :complete]
 
   validates :title, :presence => true
+  validates :user_id, :presence => true
   validates :title, :uniqueness => { :scope => :user }
 
   def tasks_attributes=(tasks_attributes)
