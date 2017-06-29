@@ -4,7 +4,6 @@ class Task < ActiveRecord::Base
 
   enum status: [:incomplete, :complete]
 
-  validates :content, :presence => true
-  validates :list_id, :presence => true
+  validates :content, :list_id, :presence => true
   validates :content, :uniqueness => { :scope => :list }
 end
