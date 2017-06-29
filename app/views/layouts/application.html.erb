@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>AstridClone</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+<%= render 'layouts/head' %>
 <body>
-  <div class="wrapper">
-    <%= render 'navbar' %>
+  <%= content_tag :div, class: "wrapper" do %>
+    <%= render 'layouts/navbar' %>
 
-    <div class="container">
+    <%= content_tag :div, class: "container" do %>
       <%= yield %>
-    </div>
-  </div>
+    <% end %>
+  <% end %>
 </body>
 </html>
