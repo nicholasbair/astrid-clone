@@ -33,6 +33,13 @@ RSpec.describe List, type: :model do
       expect(@list2.errors.size).to eq(1)
     end
 
+    it "must have a user_id" do
+      @list2 = List.new
+      @list2.title = "An title"
+      @list2.save
+      expect(@list2.errors.size).to eq(1)
+    end
+
   end
 
   it "defaults to incomplete" do
