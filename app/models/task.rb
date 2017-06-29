@@ -6,4 +6,13 @@ class Task < ActiveRecord::Base
 
   validates :content, :list_id, :presence => true
   validates :content, :uniqueness => { :scope => :list }
+
+  after_save :call_list_status
+
+  private
+
+    def call_list_status
+      self.list.check_status
+    end
+
 end

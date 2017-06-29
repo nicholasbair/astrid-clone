@@ -66,10 +66,10 @@ RSpec.describe List, type: :model do
 
   it "updates status to complete if all child tasks are complete" do
     @task2 = @list.tasks.create(content: 'another task')
-    @task.status = "complete"
-    @task2.status = "complete"
-    @task.save
-    @task2.save
+    @list.tasks.each do |task|
+      task.status = "complete"
+      task.save
+    end
 
     expect(@list.status).to eq("complete")
   end
