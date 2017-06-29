@@ -15,7 +15,7 @@ class List < ActiveRecord::Base
   end
 
   def check_status
-    self.status = "complete" unless self.tasks.any? { |task| task.status == "incomplete"}
+    self.status = "complete" unless self.tasks.any? { |task| task.status == "incomplete" }
   end
 
 end

@@ -12,7 +12,7 @@ class Task < ActiveRecord::Base
   private
 
     def call_list_status
-      self.list.check_status
+      self.list.check_status if self.complete?
     end
 
 end
