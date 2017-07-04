@@ -4,13 +4,12 @@ class List < ActiveRecord::Base
 
   enum status: [:incomplete, :complete]
 
-  validates :title, :user_id, :presence => true
+  validates :title, :presence => true
   validates :title, :uniqueness => { :scope => :user }
 
   def tasks_attributes=(tasks_attributes)
     tasks_attributes.values.each do |task_attribute|
-      task = Task.create(task_attribute)
-      self.tasks << task
+      self.tasks << Task.create(task_attribute)
     end
   end
 

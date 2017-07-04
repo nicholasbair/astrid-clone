@@ -3,23 +3,21 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update]
 
   def index
-    @lists = List.where(:user_id => params[:user_id])
-    @user = User.find_by(:id => params[:user_id])
+    @lists = current_user.lists
   end
 
   def show
   end
 
   def new
-    @user = User.find_by(:id => params[:user_id])
-    @list = @user.lists.build
+    @list = current_user.lists.build
   end
 
   def create
     @list = List.new(list_params)
 
     if @list.save
-      redirect_to user_list_path(@list.user_id, @list)
+      redirect_to user_list_path(current_user, @list)
     else
       render :new
     end
@@ -30,7 +28,7 @@ class ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-    redirect_to user_list_path(@list.user_id, @list)
+    redirect_to user_list_path(current_user, @list)
   end
 
   def delete
@@ -43,7 +41,7 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:title, :user_id, :tasks_attributes => [:content])
+      params.require(:list).permit(:title, :tasks_attributes => [:content])
     end
 
 end
