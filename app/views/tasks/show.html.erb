@@ -1,4 +1,4 @@
-<%= link_to "<- Back to list", user_list_path(@task.list.user_id, @task.list) %>
+<%= link_to "<- Back to list", user_list_path(current_user, @task.list) %>
 <br><br>
 <%= @task.content %>
 
