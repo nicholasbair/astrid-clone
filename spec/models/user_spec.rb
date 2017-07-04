@@ -46,7 +46,7 @@ RSpec.describe User, type: :model do
       @list2.tasks.create(content: 'something something task')
       @list2.tasks.create(content: 'another task')
 
-      expect(User.most_completed_tasks).to be(@user)
+      expect(User.most_completed_tasks).to be([{ :user => @user, :quanity => 1 }])
     end
 
   end
