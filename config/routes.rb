@@ -5,12 +5,14 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  get 'users/most_completed_tasks' => 'users#most_completed_tasks'
 
-  resources :users, only: [:show] do
+  resources :users do
     resources :lists
   end
 
   resources :tasks
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
