@@ -16,7 +16,7 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    redirect_to user_list_path(@task.list.user_id, @task.list)
+    redirect_to user_list_path(current_user, @task.list)
   end
 
   def delete
