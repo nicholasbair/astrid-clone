@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :lists
+    resources :tasks
   end
 
-  resources :tasks
 
 
   # Example of regular route:

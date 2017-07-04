@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update]
 
   def index
+    @tasks = current_user.tasks
   end
 
   def show

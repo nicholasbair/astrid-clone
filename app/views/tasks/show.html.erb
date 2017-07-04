@@ -2,7 +2,7 @@
 <br><br>
 <%= @task.content %>
 
-<%= form_for @task do |f| %>
+<%= form_for [current_user, @task] do |f| %>
   <%= f.hidden_field :status, :value => "complete" %>
   <%= f.submit "Mark complete" %>
 <% end %>
