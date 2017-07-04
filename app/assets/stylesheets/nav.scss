@@ -3,7 +3,7 @@
 }
 
 .navbar-brand {
-  padding: 0px 5px;
+  padding: 0px 7px;
 }
 
 .navbar-brand img {
@@ -12,4 +12,10 @@
 
 .active {
   border-bottom: solid 3px #C7313F;
+}
+
+.navbar-default .navbar-nav > .active > a,
+  .navbar-default .navbar-nav > .active > a:hover,
+  .navbar-default .navbar-nav > .active > a:focus {
+  background-color: #fff;
 }
