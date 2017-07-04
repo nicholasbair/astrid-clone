@@ -17,7 +17,6 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 gem 'pundit'
 
-# gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use jquery as the JavaScript library
