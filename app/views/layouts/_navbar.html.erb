@@ -16,10 +16,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if current_user %>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="<%= user_lists_path(current_user) %>">My Lists <span class="sr-only">(current)</span></a></li>
-        <li><a href="<%= user_tasks_path(current_user) %>">My Tasks</a></li>
-      </ul>
+        <ul id="nav-toggle" class="nav navbar-nav">
+          <%= active_link_to 'My Lists', user_lists_path(current_user), wrap_tag: :li %>
+          <%= active_link_to 'My Tasks', user_tasks_path(current_user), wrap_tag: :li %>
+        </ul>
       <% end %>
 
       <ul class="nav navbar-nav navbar-right">
