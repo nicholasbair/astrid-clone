@@ -9,7 +9,7 @@
       <%= render 'layouts/flash' %>
       <%= yield %>
     <% end %>
-    <% if current_page?(user_lists_path(current_user)) %>
+    <% if current_user && current_page?(user_lists_path(current_user)) %>
       <%= content_tag :div, class: "container" do %>
         <%= render 'layouts/footer' %>
       <% end %>
