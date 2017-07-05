@@ -1,18 +1,21 @@
 <%= link_to "<- Back my lists", user_lists_path(current_user) %>
 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-card">
+    <h1><%= @list.title %></h1>
+    <ul>
+      <% @list.tasks.each do |task| %>
+      <li><%= link_to task.content, user_task_path(current_user, task) %></li>
+      <% end %>
+    </ul>
 
-<h1><%= @list.title %></h1>
-<ul>
-  <% @list.tasks.each do |task| %>
-    <li><%= link_to task.content, user_task_path(current_user, task) %></li>
-  <% end %>
-</ul>
-
-<h3>Add a task:</h3>
-<%= form_for [current_user, @list] do |f| %>
-  <%= f.fields_for :tasks, @list.tasks.build do |task_form| %>
+    <h3>Add a task:</h3>
+    <%= form_for [current_user, @list] do |f| %>
+    <%= f.fields_for :tasks, @list.tasks.build do |task_form| %>
     <%= task_form.label :content %>
-    <%= task_form.text_field :content %>
-  <% end %>
-  <%= f.submit "Add task" %>
-<% end %>
+    <%= task_form.text_field :content, class: 'form-control' %>
+    <% end %>
+    <%= f.submit "Add task", :class => "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
