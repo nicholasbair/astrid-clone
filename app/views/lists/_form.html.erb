@@ -1,0 +1,10 @@
+<%= form_for [current_user, @list] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control', placeholder: 'Something, something, dark side...', :required => true %>
+  <%= f.fields_for :tasks, @list.tasks.build do |task_form| %>
+    <h3>Add a Task</h3>
+    <%= task_form.label :content %>
+    <%= task_form.text_field :content, class: 'form-control', placeholder: 'Don\'t lose plans to death star' %>
+  <% end %>
+  <%= f.submit 'Submit', class: 'btn btn-success' %>
+<% end %>
