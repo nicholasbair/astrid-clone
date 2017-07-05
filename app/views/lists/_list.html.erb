@@ -1,6 +1,10 @@
-<%= link_to list.title, user_list_path(current_user, list) %>
-<ul>
-  <% list.tasks.each do |task| %>
-  <li><%= task.content %></li>
-  <% end %>
-</ul>
+  <div class="card">
+    <h5>
+      <%= link_to list.title, user_list_path(current_user, list) %>
+    </h5>
+    <ul>
+      <% list.tasks.each do |task| %>
+      <li><%= link_to task.content, user_task_path(current_user, task) %></li>
+      <% end %>
+    </ul>
+  </div>
