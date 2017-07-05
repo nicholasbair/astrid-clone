@@ -1,4 +1,11 @@
 html, .container, .wrapper {
-  // background-color: #f7f7f7;
   background-color: #EBEBEB;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px 10px 0;
+  border: 0.05em solid rgba(194,194,194,0.7);
 }

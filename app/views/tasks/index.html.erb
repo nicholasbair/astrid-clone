@@ -1,3 +1,16 @@
-<% @tasks.each do |task| %>
-  <%= link_to task.content, user_task_path(current_user, task) %> <br>
-<% end %>
+<div class="row">
+  <div class="col-md-4">
+    <h2>Ready</h2>
+    <%= render :collection => @tasks, :partial => 'task' %>
+  </div>
+
+  <div class="col-md-4">
+    <h2>In Progress</h2>
+    <%= render :collection => @tasks, :partial => 'task' %>
+  </div>
+
+  <div class="col-md-4">
+    <h2>Completed</h2>
+    <%= render :collection => @tasks, :partial => 'task' %>
+  </div>
+</div>
