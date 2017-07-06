@@ -2,7 +2,7 @@ class List < ActiveRecord::Base
   belongs_to :user
   has_many :tasks
 
-  enum status: [:incomplete, :complete]
+  enum status: [:incomplete, :in_progress, :complete]
 
   validates :title, :presence => true
   validates :title, :uniqueness => { :scope => :user }
@@ -14,6 +14,7 @@ class List < ActiveRecord::Base
   end
 
   def check_status
+    self.status = "in_progress" if self.tasks.any? { |task| task.status == "complete" }
     self.status = "complete" unless self.tasks.any? { |task| task.status == "incomplete" }
     self.save
   end
