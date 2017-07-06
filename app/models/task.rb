@@ -12,7 +12,8 @@ class Task < ActiveRecord::Base
   private
 
     def call_list_status
-      self.list.check_status
+      # list_id is not set on first save
+      self&.list&.check_status
     end
 
 end
