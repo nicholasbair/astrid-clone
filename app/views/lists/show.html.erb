@@ -1,22 +1,20 @@
 <%= link_to "<- Back my lists", user_lists_path(current_user) %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3 form-card">
-    <h1>
-      <%= @list.title %>
-      <a href="<%= edit_user_list_path(current_user, @list) %>">
-        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-      </a>
-    </h1>
-    <ul>
-      <% @list.tasks.each do |task| %>
-      <li class="<%= task.status %>"><%= link_to task.content, user_task_path(current_user, task) %></li>
-      <% end %>
-    </ul>
-
-    <%= form_for [current_user, @list] do |f| %>
-    <%= render_add_task(f) %>
-    <%= f.submit "Add task", :class => "btn btn-success" %>
+<%= form_wrapper do %>
+  <h1>
+    <%= @list.title %>
+    <a href="<%= edit_user_list_path(current_user, @list) %>">
+      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+    </a>
+  </h1>
+  <ul>
+    <% @list.tasks.each do |task| %>
+    <li class="<%= task.status %>"><%= link_to task.content, user_task_path(current_user, task) %></li>
     <% end %>
-  </div>
-</div>
+  </ul>
+
+  <%= form_for [current_user, @list] do |f| %>
+  <%= render_add_task(f) %>
+  <%= f.submit "Add task", :class => "btn btn-success" %>
+  <% end %>
+<% end %>
