@@ -1,5 +1,6 @@
 <% ["error", "notice", "alert"].each do |type| %>
   <%= flash_wrapper(type) do %>
+    <%= flash[type] %>
     <%= render 'layouts/dismiss_button' %>
   <% end %>
 <% end %>

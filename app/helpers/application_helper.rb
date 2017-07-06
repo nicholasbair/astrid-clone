@@ -7,10 +7,17 @@ module ApplicationHelper
     end
   end
 
+  def flash_class(type)
+    case type
+    when "error" then "danger"
+    when "notice" then "success"
+    when "alert" then "warning"
+    end
+  end
+
   def flash_wrapper(type)
     if flash[type]
-      content_tag :div, :id => "flash_#{type}", :class => "alert alert-danger alert-dismissible" do
-        flash[:notice]
+      content_tag :div, :id => "flash_#{type}", :class => "alert alert-#{flash_class(type)} alert-dismissible" do
         yield
       end
     end
