@@ -1,8 +1,14 @@
 <%= link_to "<- Back to list", user_list_path(current_user, @task.list) %>
 <br><br>
-<%= @task.content %>
+<p class="<%= @task.status %>"><%= @task.content %></p>
+<p>Belongs to: <%= @task.list.title %> list</p>
 
 <%= form_for [current_user, @task] do |f| %>
-  <%= f.hidden_field :status, :value => "complete" %>
-  <%= f.submit "Mark complete" %>
+  <% if @task.complete? %>
+    <%= f.hidden_field :status, :value => "incomplete" %>
+    <%= f.submit "Mark incomplete" %>
+  <% else %>
+    <%= f.hidden_field :status, :value => "complete" %>
+    <%= f.submit "Mark complete" %>
+  <% end %>
 <% end %>

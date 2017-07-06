@@ -14,8 +14,15 @@ class List < ActiveRecord::Base
   end
 
   def check_status
-    self.status = "in_progress" if self.tasks.any? { |task| task.status == "complete" }
-    self.status = "complete" unless self.tasks.any? { |task| task.status == "incomplete" }
+    case
+    when self.tasks.all? { |task| task.status == "incomplete" }
+      self.status = "incomplete"
+    when self.tasks.all? { |task| task.status == "complete" }
+      self.status = "complete"
+    when self.tasks.any? { |task| task.status == "complete" }
+      self.status = "in_progress"
+    end
+
     self.save
   end
 
