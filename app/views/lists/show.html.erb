@@ -13,7 +13,7 @@
     <%= form_for [current_user, @list] do |f| %>
     <%= f.fields_for :tasks, @list.tasks.build do |task_form| %>
     <%= task_form.label :content %>
-    <%= task_form.text_field :content, class: 'form-control' %>
+    <%= task_form.text_field :content, class: 'form-control', :required => true %>
     <% end %>
     <%= f.submit "Add task", :class => "btn btn-success" %>
     <% end %>

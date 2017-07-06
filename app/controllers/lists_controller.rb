@@ -19,6 +19,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to user_list_path(current_user, @list)
     else
+      set_error
       render :new
     end
   end
@@ -27,14 +28,22 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list.update(list_params)
-    redirect_to user_list_path(current_user, @list)
+    if @list.update(list_params)
+      redirect_to user_list_path(current_user, @list)
+    else
+      set_error
+      redirect_to user_list_path(current_user, @list)
+    end
   end
 
   def delete
   end
 
   private
+
+    def set_error
+      flash[:error] = @list.errors.full_messages[0]
+    end
 
     def set_list
       @list = List.find_by(:id => params[:id])
