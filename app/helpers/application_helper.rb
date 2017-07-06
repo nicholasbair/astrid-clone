@@ -6,4 +6,13 @@ module ApplicationHelper
       end
     end
   end
+
+  def flash_wrapper(type)
+    if flash[type]
+      content_tag :div, :id => "flash_#{type}", :class => "alert alert-danger alert-dismissible" do
+        flash[:notice]
+        yield
+      end
+    end
+  end
 end
