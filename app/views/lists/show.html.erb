@@ -8,9 +8,7 @@
     </a>
   </h1>
   <ul>
-    <% @list.tasks.each do |task| %>
-    <li class="<%= task.status %>"><%= link_to task.content, user_task_path(current_user, task) %></li>
-    <% end %>
+    <%= render partial: "task", collection: @list.tasks %>
   </ul>
 
     <%= form_for [current_user, @list] do |f| %>
@@ -18,11 +16,11 @@
       <%= f.submit "Add task", :class => "btn btn-success" %>
     <% end %>
     <div class="row">
-    <div class="col-md-3">
-      <%= button_to "Delete List", user_list_path(current_user, @list),
-        :method => :delete, :class => "btn btn-danger delete-btn",
-        data: { confirm: "Danger, this will delete list and all associated tasks" }
-      %>
-    </div>
+      <div class="col-md-3">
+        <%= button_to "Delete List", user_list_path(current_user, @list),
+          :method => :delete, :class => "btn btn-danger delete-btn",
+          data: { confirm: "Danger, this will delete list and all associated tasks" }
+        %>
+      </div>
   </div>
 <% end %>
