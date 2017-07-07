@@ -16,8 +16,12 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task.update(task_params)
-    redirect_to user_list_path(current_user, @task.list)
+    if @task.update(task_params)
+      redirect_to user_list_path(current_user, @task.list)
+    else
+      set_error
+      render :edit
+    end
   end
 
   def destroy
@@ -27,12 +31,16 @@ class TasksController < ApplicationController
 
   private
 
+    def set_error
+      flash[:error] = @task.errors.full_messages[0]
+    end
+
     def set_task
       @task = Task.find_by(:id => params[:id])
     end
 
     def task_params
-      params.require(:task).permit(:status)
+      params.require(:task).permit(:status, :content)
     end
 
 end

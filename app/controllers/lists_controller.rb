@@ -33,7 +33,7 @@ class ListsController < ApplicationController
       redirect_to user_list_path(current_user, @list)
     else
       set_error
-      redirect_to user_list_path(current_user, @list)
+      render :edit
     end
   end
 
