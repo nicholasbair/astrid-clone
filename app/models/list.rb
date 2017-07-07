@@ -19,7 +19,7 @@ class List < ActiveRecord::Base
       self.status = "incomplete"
     when self.tasks.all? { |task| task.status == "complete" }
       self.status = "complete"
-    when self.tasks.any? { |task| task.status == "complete" }
+    when self.tasks.any? { |task| task.status == "complete" || task.status == "in_progress" }
       self.status = "in_progress"
     end
 
