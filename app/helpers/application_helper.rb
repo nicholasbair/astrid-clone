@@ -22,4 +22,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def sort_by(items, qualifier)
+    items.select { |i| i.status == qualifier }
+  end
 end

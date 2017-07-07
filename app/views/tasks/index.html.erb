@@ -1,16 +1,16 @@
 <div class="row">
   <div class="col-md-4">
     <h2>Ready</h2>
-    <%= render :collection => @tasks, :partial => 'task' %>
+    <%= render :collection => sort_by(@tasks, 'incomplete'), :partial => 'task' %>
   </div>
 
   <div class="col-md-4">
     <h2>In Progress</h2>
-    <%= render :collection => @tasks, :partial => 'task' %>
+    <%= render :collection => sort_by(@tasks, 'in_progress'), :partial => 'task' %>
   </div>
 
   <div class="col-md-4">
     <h2>Completed</h2>
-    <%= render :collection => @tasks, :partial => 'task' %>
+    <%= render :collection => sort_by(@tasks, 'complete'), :partial => 'task' %>
   </div>
 </div>
