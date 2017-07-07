@@ -2,8 +2,8 @@
   <%= f.label :title %>
   <%= f.text_field :title, class: 'form-control', placeholder: 'Something, something, dark side...', :required => true %>
   <br>
-  <%= f.label "Due Date" %> <br>
-  <%= f.text_field :due_date, class: 'form-control', 'data-provide' => 'datepicker' %>
+  <%= f.label :due_date %> <br>
+  <%= f.date_field :due_date, class: 'form-control' %>
   <%= render_add_task(f) %>
   <%= f.submit 'Submit', class: 'btn btn-success' %>
 <% end %>

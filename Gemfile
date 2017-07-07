@@ -20,7 +20,6 @@ gem 'pundit'
 gem 'omniauth-github'
 
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'bootstrap-datepicker-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

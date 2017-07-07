@@ -5,4 +5,7 @@
     <ul>
       <%= render partial: "task", collection: list.tasks %>
     </ul>
+    <% if list.due_date && list.status != "complete" %>
+      <p class="<%= list.due_date < Date.today ? 'overdue' : '' %>">Due: <%= list.due_date.strftime("%m/%d/%Y") %></p>
+    <% end %>
   </div>

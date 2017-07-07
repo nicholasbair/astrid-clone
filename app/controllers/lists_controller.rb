@@ -21,6 +21,7 @@ class ListsController < ApplicationController
       redirect_to user_list_path(current_user, @list)
     else
       set_error
+      # TODO: issue #40
       render :new
     end
   end
@@ -54,7 +55,7 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:title, :tasks_attributes => [:content])
+      params.require(:list).permit(:title, :due_date, :tasks_attributes => [:content])
     end
 
 end
