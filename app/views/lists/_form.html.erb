@@ -2,8 +2,10 @@
   <%= f.label :title %>
   <%= f.text_field :title, class: 'form-control', placeholder: 'Something, something, dark side...', :required => true %>
   <br>
-  <%= f.label :due_date %> <br>
-  <%= f.date_field :due_date, class: 'form-control' %>
+  <%= f.fields_for :deadline, @list.build_deadline do |d| %>
+    <%= d.label :date %> <br>
+    <%= d.date_field :date, class: 'form-control' %>
+  <% end %>
   <%= render_add_task(f) %>
   <%= f.submit 'Submit', class: 'btn btn-success' %>
 <% end %>

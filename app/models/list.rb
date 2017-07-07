@@ -14,6 +14,10 @@ class List < ActiveRecord::Base
     end
   end
 
+  def deadline_attributes=(deadline_attributes)
+    self.deadline = Deadline.create(deadline_attributes)
+  end
+
   def check_status
     case
     when self.tasks.all? { |task| task.status == "incomplete" }

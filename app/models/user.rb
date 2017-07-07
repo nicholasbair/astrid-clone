@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :lists
-  has_many :deadlines
+  has_many :deadlines, :through => :lists
   has_many :tasks, :through => :lists
 
   validates :username, :presence => true
