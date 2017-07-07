@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_task, only: [:show, :edit, :update]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     @tasks = current_user.tasks
@@ -20,7 +20,9 @@ class TasksController < ApplicationController
     redirect_to user_list_path(current_user, @task.list)
   end
 
-  def delete
+  def destroy
+    Task.destroy(@task)
+    redirect_to user_list_path(current_user, @task.list)
   end
 
   private

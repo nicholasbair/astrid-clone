@@ -4,7 +4,9 @@
     </h5>
     <ul>
       <% list.tasks.each do |task| %>
-      <li class="<%= task.status %>"><%= link_to task.content, user_task_path(current_user, task) %></li>
+      <li class="<%= task.status %>">
+        <%= link_to task.content, user_task_path(current_user, task) %>
+      </li>
       <% end %>
     </ul>
   </div>

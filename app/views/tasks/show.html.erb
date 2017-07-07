@@ -11,6 +11,12 @@
     <p>Belongs to: <%= @task.list.title %> list</p>
     <div class="row">
       <%= update_status(@task) %>
+      <div class="col-md-3">
+        <%= button_to "Delete Task", user_task_path(current_user, @task),
+          :method => :delete, :class => "btn btn-danger delete-btn",
+          data: { confirm: "Wait, what...are you sure?" }
+        %>
+      </div>
     </div>
   </div>
 </div>

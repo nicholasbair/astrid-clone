@@ -14,7 +14,7 @@
   </ul>
 
   <%= form_for [current_user, @list] do |f| %>
-  <%= render_add_task(f) %>
-  <%= f.submit "Add task", :class => "btn btn-success" %>
+    <%= render_add_task(f) %>
+    <%= f.submit "Add task", :class => "btn btn-success" %>
   <% end %>
 <% end %>
