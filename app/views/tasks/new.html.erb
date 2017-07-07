@@ -1,0 +1,8 @@
+<%= form_wrapper do %>
+  <%= form_for [current_user, @task] do |f| %>
+    <h3>Create a Task</h3>
+      <%= f.label :content %>
+      <%= f.text_field :content, class: 'form-control', placeholder: 'Don\'t lose plans to death star' %>
+    <%= f.submit 'Submit', class: 'btn btn-success' %>
+  <% end %>
+<% end %>
