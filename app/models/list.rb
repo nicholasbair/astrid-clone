@@ -1,6 +1,7 @@
 class List < ActiveRecord::Base
   belongs_to :user
   has_many :tasks
+  has_one :deadline
 
   enum status: [:incomplete, :in_progress, :complete]
 
@@ -28,6 +29,12 @@ class List < ActiveRecord::Base
 
   def self.available_lists
     self.where("status = ? OR status = ?", 0, 1)
+  end
+
+  def overdue?
+    if self.due_date
+      true unless self.due_date > Date.today
+    end
   end
 
 end
