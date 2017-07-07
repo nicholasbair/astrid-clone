@@ -14,7 +14,6 @@ class ListsController < ApplicationController
   end
 
   def create
-    binding.pry
     @list = List.new(list_params)
     @list.user = current_user
 
@@ -40,7 +39,6 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list.tasks.each { |t| Task.destroy(t) }
     List.destroy(@list)
     redirect_to user_lists_path(current_user)
   end

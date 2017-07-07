@@ -6,6 +6,6 @@ module ListsHelper
   end
 
   def print_due_date(list)
-    list.due_date.strftime("%m/%d/%Y")
+    list.deadline.date.strftime("%m/%d/%Y")
   end
 end

@@ -1,7 +1,7 @@
 class List < ActiveRecord::Base
   belongs_to :user
-  has_many :tasks
-  has_one :deadline
+  has_many :tasks, :dependent => :destroy
+  has_one :deadline, :dependent => :destroy
 
   enum status: [:incomplete, :in_progress, :complete]
 
@@ -36,9 +36,7 @@ class List < ActiveRecord::Base
   end
 
   def overdue?
-    if self.due_date
-      true unless self.due_date > Date.today
-    end
+    true unless self.deadline.date > Date.today
   end
 
 end

@@ -14,7 +14,7 @@ class Deadline < ActiveRecord::Base
     reminder = "Hi #{self.user.username}. Just a reminder, #{self.list.title} is incomplete and due tomorrow."
     message = @client.account.messages.create(
       :from => @twilio_number,
-      :to => self.phone_number,
+      :to => self.user.phone_number,
       :body => reminder,
     )
     puts message.to
