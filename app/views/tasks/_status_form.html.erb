@@ -1,6 +1,6 @@
 <div class="col-md-3">
   <%= form_for [current_user, @task] do |f| %>
     <%= f.hidden_field :status, :value => task_status %>
-    <%= f.submit "Mark #{task_status}", :class => "btn btn-success" %>
+    <%= f.submit "Mark #{task_status.humanize}", :class => "btn btn-success" %>
   <% end %>
 </div>
