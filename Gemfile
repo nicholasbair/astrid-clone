@@ -21,6 +21,15 @@ gem 'omniauth-github'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
+# Send reminder sms
+gem 'twilio-ruby', '~> 5.0.0.rc25'
+
+# Use delayed job for running background jobs
+gem 'delayed_job_active_record'
+
+# Need daemons to start delayed_job
+gem 'daemons'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
