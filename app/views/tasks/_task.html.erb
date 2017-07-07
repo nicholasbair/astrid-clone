@@ -1,3 +1,3 @@
 <div class="card">
-  <%= link_to task.content, user_task_path(current_user, task) %> <br>
+  <span class="<%= task.status %>"><%= link_to task.content, user_task_path(current_user, task) %></span>
 </div>
