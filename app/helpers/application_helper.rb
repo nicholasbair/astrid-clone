@@ -1,11 +1,13 @@
 module ApplicationHelper
   def render_columns(statuses, items, item)
-    statuses.collect do |status|
-      content_tag :div, :class => "col-md-4" do
-        concat(tag_builder("h2", status.humanize.titleize))
-        concat(render :collection => sort_by(items, status), :partial => item)
-      end
-    end.join.html_safe
+    content_tag :div, :class => "row" do
+      statuses.collect do |status|
+        content_tag :div, :class => "col-md-4" do
+          concat(tag_builder("h2", status.humanize.titleize))
+          concat(render :collection => sort_by(items, status), :partial => item)
+        end
+      end.join.html_safe
+    end
   end
 
   def get_statuses(klass)
