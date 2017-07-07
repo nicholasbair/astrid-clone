@@ -6,13 +6,6 @@ module TasksHelper
   end
 
   def update_status(task)
-    case task.status
-    when "complete"
-      render_status_buttons(["incomplete", "in_progress"])
-    when "in_progress"
-      render_status_buttons(["incomplete", "complete"])
-    when "incomplete"
-      render_status_buttons(["complete", "in_progress"])
-    end
+    render_status_buttons(Task.statuses.keys.find_all { |k| k != task.status })
   end
 end
