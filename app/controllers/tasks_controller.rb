@@ -11,10 +11,18 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @lists = List.available_lists.where(:user_id => current_user)
   end
 
   def create
-    binding.pry
+    @task = Task.new(task_params)
+
+    if @task.save
+      redirect_to user_list_path(current_user, @task.list)
+    else
+      set_error
+      render :new
+    end
   end
 
   def edit
@@ -45,7 +53,7 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:status, :content)
+      params.require(:task).permit(:status, :content, :list_id)
     end
 
 end

@@ -26,4 +26,8 @@ class List < ActiveRecord::Base
     self.save
   end
 
+  def self.available_lists
+    self.where("status = ? OR status = ?", 0, 1)
+  end
+
 end
