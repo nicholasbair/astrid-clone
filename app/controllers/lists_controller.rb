@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_list, only: [:show, :edit, :update]
+  before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
     @lists = current_user.lists
@@ -37,7 +37,10 @@ class ListsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @list.tasks.each { |t| Task.destroy(t) }
+    List.destroy(@list)
+    redirect_to user_lists_path(current_user)
   end
 
   private

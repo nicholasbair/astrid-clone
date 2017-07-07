@@ -13,8 +13,16 @@
     <% end %>
   </ul>
 
-  <%= form_for [current_user, @list] do |f| %>
-    <%= render_add_task(f) %>
-    <%= f.submit "Add task", :class => "btn btn-success" %>
-  <% end %>
+    <%= form_for [current_user, @list] do |f| %>
+      <%= render_add_task(f) %>
+      <%= f.submit "Add task", :class => "btn btn-success" %>
+    <% end %>
+    <div class="row">
+    <div class="col-md-3">
+      <%= button_to "Delete List", user_list_path(current_user, @list),
+        :method => :delete, :class => "btn btn-danger delete-btn",
+        data: { confirm: "Danger, this will delete list and all associated tasks?" }
+      %>
+    </div>
+  </div>
 <% end %>
