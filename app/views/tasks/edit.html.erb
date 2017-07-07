@@ -3,6 +3,8 @@
     <h3>Edit a Task</h3>
       <%= f.label :content %>
       <%= f.text_field :content, class: 'form-control', placeholder: 'Don\'t lose plans to death star' %>
+      <%= f.label :list %>
+      <%= f.collection_select :list_id, @lists, :id, :title, {}, { :class => "form-control" } %>
     <%= f.submit 'Submit', class: 'btn btn-success' %>
   <% end %>
 <% end %>

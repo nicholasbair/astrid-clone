@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_lists, only: [:new, :edit]
 
   def index
     @tasks = current_user.tasks
@@ -11,7 +12,6 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @lists = List.available_lists.where(:user_id => current_user)
   end
 
   def create
@@ -50,6 +50,10 @@ class TasksController < ApplicationController
 
     def set_task
       @task = Task.find_by(:id => params[:id])
+    end
+
+    def set_lists
+      @lists = List.available_lists.where(:user_id => current_user)
     end
 
     def task_params
