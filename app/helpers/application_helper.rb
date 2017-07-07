@@ -1,4 +1,22 @@
 module ApplicationHelper
+  def render_columns(statuses)
+    statuses.collect do |status|
+      content_tag :div, :class => "col-md-4" do
+        concat(tag_builder("h2", status.humanize.titleize))
+        # Need to make @lists and list implicit
+        concat(render :collection => sort_by(@lists, status), :partial => 'list')
+      end
+    end.join.html_safe
+  end
+
+  def get_statuses(klass)
+    klass.statuses.keys
+  end
+
+  def tag_builder(tag, content)
+    "<#{tag}>#{content}</#{tag}>".html_safe
+  end
+
   def form_wrapper
     content_tag :div, :class => 'row' do
       content_tag :div, :class => 'col-md-6 col-md-offset-3 form-card' do
