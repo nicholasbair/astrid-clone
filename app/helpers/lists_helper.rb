@@ -1,6 +1,6 @@
 module ListsHelper
   def render_add_task(f)
-    if current_page?(:action => "new") || current_page?(:action => "show")
+    if !current_page?(:action => "edit")
       render :partial => "add_task", :locals => { :f => f }
     end
   end

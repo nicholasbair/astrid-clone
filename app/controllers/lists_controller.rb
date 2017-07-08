@@ -22,6 +22,8 @@ class ListsController < ApplicationController
       redirect_to user_list_path(current_user, @list)
     else
       set_error
+      @deadline = @list.build_deadline
+      
       # TODO: issue #40
       render :new
     end
