@@ -22,6 +22,16 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
     </div>
 
+    <div class="field">
+      <%= f.label :phone_number %><br />
+      <%= f.telephone_field :phone_number, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :time_zone %><br />
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all.sort, default: "Pacific Time (US & Canada)" %>
+    </div>
+
     <div class="actions">
       <%= f.submit "Sign up", class: 'btn btn-success' %>
     </div>
