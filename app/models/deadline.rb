@@ -6,12 +6,10 @@ class Deadline < ActiveRecord::Base
 
   after_create :reminder
 
-  @@REMINDER_TIME = 30.minutes
-
   def reminder
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    reminder = "Hi #{self.user.username}. Just a reminder, your list #{self.list.title} is incomplete and due in 30 minutes"
+    reminder = "Hi #{self.user.username}. Just a reminder, your list #{self.list.title} is incomplete and due in 5 minutes"
     message = @client.messages.create(
       :from => @twilio_number,
       :to => self.user.phone_number,
@@ -21,7 +19,8 @@ class Deadline < ActiveRecord::Base
   end
 
   def when_to_run
-    time - @@REMINDER_TIME
+    reminder_time = 5.minutes
+    Time.zone.parse(time.to_s).utc - reminder_time
   end
 
   handle_asynchronously :reminder, :run_at => Proc.new { |i| i.when_to_run }
