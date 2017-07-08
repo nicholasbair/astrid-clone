@@ -15,7 +15,9 @@ class List < ActiveRecord::Base
   end
 
   def deadline_attributes=(deadline_attributes)
-    self.deadline = Deadline.create(parse_time_attributes(deadline_attributes))
+    if !deadline_attributes[:time].empty?
+      self.deadline = Deadline.create(parse_time_attributes(deadline_attributes))
+    end
   end
 
   def parse_time_attributes(attributes)

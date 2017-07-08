@@ -11,6 +11,7 @@ class ListsController < ApplicationController
 
   def new
     @list = current_user.lists.build
+    @deadline = @list.build_deadline
   end
 
   def create
@@ -27,6 +28,11 @@ class ListsController < ApplicationController
   end
 
   def edit
+    @deadline = @list.deadline
+
+    if !@list.deadline
+      @deadline = @list.build_deadline
+    end
   end
 
   def update
@@ -39,7 +45,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    List.destroy(@list)
+    List.destroy(@list.id)
     redirect_to user_lists_path(current_user)
   end
 
