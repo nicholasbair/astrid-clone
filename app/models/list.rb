@@ -15,12 +15,14 @@ class List < ActiveRecord::Base
   end
 
   def deadline_attributes=(deadline_attributes)
-    binding.pry
-    #  Time.zone.parse(t).utc
-    # Need to convert the input time to UTC time
-    # How do we know what time zone the user is in?
-    # user.timezone
-    self.deadline = Deadline.create(deadline_attributes)
+    self.deadline = Deadline.create(parse_time_attributes(deadline_attributes))
+  end
+
+  def parse_time_attributes(attributes)
+    Time.zone = attributes[:time_zone]
+    attributes[:time] = Time.parse(attributes[:time].gsub(/T/, " ")).utc
+
+    attributes
   end
 
   def check_status

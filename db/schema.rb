@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708150515) do
+ActiveRecord::Schema.define(version: 20170708164803) do
 
   create_table "deadlines", force: :cascade do |t|
     t.integer  "list_id"
     t.datetime "time"
+    t.string   "time_zone"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -67,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170708150515) do
     t.string   "provider"
     t.string   "uid"
     t.string   "phone_number"
-    t.string   "timezone"
+    t.string   "time_zone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

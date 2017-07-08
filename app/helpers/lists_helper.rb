@@ -6,6 +6,8 @@ module ListsHelper
   end
 
   def print_due_date(list)
-    list.deadline.time.strftime("%b %e, %l:%M %p")
+    # Need to set Time.zone?
+    # Time.zone = current_user.timezone
+    list.deadline.time.localtime.strftime("%b %e, %l:%M %p")
   end
 end
