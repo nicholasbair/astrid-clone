@@ -9,6 +9,8 @@ Bundler.require(*Rails.groups)
 module AstridClone
   class Application < Rails::Application
 
+    config.active_record.default_timezone = :utc
+
     config.generators do |g|
       g.test_framework :rspec,
         :fixtures => true,

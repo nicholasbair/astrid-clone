@@ -11,8 +11,8 @@ class Deadline < ActiveRecord::Base
   def reminder
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    reminder = "Hi #{self.user.username}. Just a reminder, your list #{self.list.title} is incomplete and in 30 minutes"
-    message = @client.account.messages.create(
+    reminder = "Hi #{self.user.username}. Just a reminder, your list #{self.list.title} is incomplete and due in 30 minutes"
+    message = @client.messages.create(
       :from => @twilio_number,
       :to => self.user.phone_number,
       :body => reminder,
