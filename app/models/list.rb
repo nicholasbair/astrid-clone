@@ -43,8 +43,8 @@ class List < ActiveRecord::Base
   end
 
   def overdue?
-    true unless self.deadline.time > Time.zone.now
-    # Time.past?()
+    Time.zone = self.user.time_zone
+    self.deadline.time < Time.zone.now
   end
 
 end
