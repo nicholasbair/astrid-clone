@@ -15,6 +15,11 @@ class List < ActiveRecord::Base
   end
 
   def deadline_attributes=(deadline_attributes)
+    binding.pry
+    #  Time.zone.parse(t).utc
+    # Need to convert the input time to UTC time
+    # How do we know what time zone the user is in?
+    # user.timezone
     self.deadline = Deadline.create(deadline_attributes)
   end
 
@@ -36,7 +41,8 @@ class List < ActiveRecord::Base
   end
 
   def overdue?
-    true unless self.deadline.date > Date.today
+    true unless self.deadline.time > Time.zone.now
+    # Time.past?()
   end
 
 end

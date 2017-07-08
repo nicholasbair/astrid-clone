@@ -14,6 +14,7 @@ class ListsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @list = List.new(list_params)
     @list.user = current_user
 
@@ -54,7 +55,7 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:title, :deadline_attributes => [:date], :tasks_attributes => [:content])
+      params.require(:list).permit(:title, :deadline_attributes => [:time], :tasks_attributes => [:content])
     end
 
 end
