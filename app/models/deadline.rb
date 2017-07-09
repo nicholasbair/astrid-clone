@@ -21,7 +21,7 @@ class Deadline < ActiveRecord::Base
   end
 
   def when_to_run
-    reminder_time = 1.minutes
+    reminder_time = 5.minutes
     Time.zone.parse(time.to_s).utc - reminder_time
   end
 
