@@ -5,21 +5,29 @@ class Deadline < ActiveRecord::Base
   has_one :user, :through => :list
 
   after_create :reminder
+  # after_create :init_job
+
+  # def init_job
+  #   SendDeadlineReminderJob.set(wait_until: when_to_run).perform_later(self)
+  # end
 
   def reminder
-    @twilio_number = ENV['TWILIO_NUMBER']
-    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    reminder = "Hi #{self.user.username}. Just a reminder, your list #{self.list.title} is incomplete and due in 5 minutes"
-    message = @client.messages.create(
-      :from => @twilio_number,
-      :to => self.user.phone_number,
-      :body => reminder,
-    )
-    puts message.to
+    if !self.list.complete?
+      @twilio_number = ENV['TWILIO_NUMBER']
+      @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+      reminder = "Hi #{self.user.username}. Just a reminder, your list #{self.list.title} is incomplete and due in 5 minutes"
+      message = @client.messages.create(
+        :from => @twilio_number,
+        :to => self.user.phone_number,
+        :body => reminder,
+      )
+      puts message.to
+      # puts "Running job: #{self.list.title}"
+    end
   end
 
   def when_to_run
-    reminder_time = 5.minutes
+    reminder_time = 1.minutes
     Time.zone.parse(time.to_s).utc - reminder_time
   end
 

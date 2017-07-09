@@ -23,8 +23,7 @@ class ListsController < ApplicationController
     else
       set_error
       @deadline = @list.build_deadline
-      
-      # TODO: issue #40
+
       render :new
     end
   end
