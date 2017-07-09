@@ -5,11 +5,6 @@ class Deadline < ActiveRecord::Base
   has_one :user, :through => :list
 
   after_create :reminder
-  # after_create :init_job
-
-  # def init_job
-  #   SendDeadlineReminderJob.set(wait_until: when_to_run).perform_later(self)
-  # end
 
   def reminder
     if !self.list.complete?
@@ -22,7 +17,6 @@ class Deadline < ActiveRecord::Base
         :body => reminder,
       )
       puts message.to
-      # puts "Running job: #{self.list.title}"
     end
   end
 
