@@ -1,0 +1,5 @@
+<%= f.fields_for :deadline, @deadline do |d| %>
+  <%= d.label :time %> <br>
+  <%= d.datetime_local_field :time, class: 'form-control' %>
+  <%= d.hidden_field :time_zone, :value => current_user.time_zone %>
+<% end %>

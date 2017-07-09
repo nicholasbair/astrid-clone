@@ -14,4 +14,10 @@ module ListsHelper
       render :partial => "deadline", :locals => { :list => list }
     end
   end
+
+  def render_deadline_form(f)
+    if current_user.phone_number && current_user.time_zone
+      render :partial => "deadline_form", :locals => { :f => f }
+    end
+  end
 end

@@ -2,11 +2,7 @@
   <%= f.label :title %>
   <%= f.text_field :title, class: 'form-control', placeholder: 'Something, something, dark side...', :required => true %>
   <br>
-  <%= f.fields_for :deadline, @deadline do |d| %>
-    <%= d.label :time %> <br>
-    <%= d.datetime_local_field :time, class: 'form-control' %>
-    <%= d.hidden_field :time_zone, :value => current_user.time_zone %>
-  <% end %>
+  <%= render_deadline_form(f) %>
   <%= render_add_task(f) %>
   <%= f.submit 'Submit', class: 'btn btn-success' %>
 <% end %>

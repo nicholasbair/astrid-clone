@@ -4,6 +4,10 @@ class ListsController < ApplicationController
 
   def index
     @lists = current_user.lists
+
+    if current_user.phone_number.nil? || current_user.time_zone.nil?
+      flash[:error] = "Add your phone number and time zone in 'My Account' to unlock SMS reminders."
+    end
   end
 
   def show
