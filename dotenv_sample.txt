@@ -1,0 +1,7 @@
+APP_ID=/***GitHub app id here***/
+APP_SECRET=/***GitHub app id here***/
+CALLBACK_URL=http://localhost:3000/users/auth/github/callback
+
+TWILIO_ACCOUNT_SID=/***Twilio account sid here, find in console***/
+TWILIO_AUTH_TOKEN=/***Twilio auth token here, find in console***/
+TWILIO_NUMBER=/***Twilio sender phone number here, find in console***/
