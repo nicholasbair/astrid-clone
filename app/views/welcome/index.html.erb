@@ -1,5 +1,9 @@
 <div class="jumbotron card">
   <h1>Welcome to Astrid-Clone</h1>
   <p>A Rails task manager web app with Twilio SMS reminders</p>
-  <p><a class="btn btn-primary btn-lg" href="<%= new_user_registration_path %>" role="button">Sign Up</a></p>
+  <% if current_user %>
+    <p><a class="btn btn-primary btn-lg" href="<%= user_lists_path(current_user) %>" role="button">My Lists</a></p>
+  <% else %>
+    <p><a class="btn btn-primary btn-lg" href="<%= new_user_registration_path %>" role="button">Sign Up</a></p>
+  <% end %>
 </div>
