@@ -27,8 +27,6 @@ class List < ActiveRecord::Base
     attributes
   end
 
-  # NOTE: this is a good place to delete delayed_job if there is a deadline
-  # and the list status is complete
   def check_status
     case
     when self.tasks.all? { |task| task.status == "incomplete" }
