@@ -5,8 +5,5 @@
     <ul>
       <%= render partial: "task", collection: list.tasks %>
     </ul>
-    <!-- TODO: too much logic here, #41 -->
-    <% if list.deadline && list.status != "complete" %>
-      <p class="<%= list.overdue? ? 'overdue' : '' %>">Due: <%= print_due_date(list) %></p>
-    <% end %>
+    <%= render_deadline(list) %>
   </div>

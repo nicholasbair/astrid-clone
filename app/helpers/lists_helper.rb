@@ -8,4 +8,10 @@ module ListsHelper
   def print_due_date(list)
     list.deadline.time.localtime.strftime("%b %e, %l:%M %p")
   end
+
+  def render_deadline(list)
+    if list.deadline && !list.complete?
+      render :partial => "deadline", :locals => { :list => list }
+    end
+  end
 end
