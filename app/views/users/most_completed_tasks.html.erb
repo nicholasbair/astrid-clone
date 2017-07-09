@@ -2,5 +2,5 @@ Hello from most completed tasks
 <br>
 
 <% @most_completed.each.with_index do |item, index| %>
-  <%= index + 1 %>. <%= item[:user].username %> - <%= item[:quantity] %> <br>
+  <%= index + 1 %>. <%= item[:user].email %> - <%= item[:quantity] %> <br>
 <% end %>
