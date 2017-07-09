@@ -1,54 +1,11 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="<%= root_path %>">
-        <%= image_tag "astrid-icon.jpeg" %>
-      </a>
-    </div>
+    <%= render 'layouts/nav_header' %>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <% if current_user %>
-        <ul id="nav-toggle" class="nav navbar-nav">
-          <%= active_link_to 'My Lists', user_lists_path(current_user), wrap_tag: :li %>
-          <%= active_link_to 'My Tasks', user_tasks_path(current_user), wrap_tag: :li %>
-        </ul>
-      <% end %>
-
-      <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <span class="plus-sign">+</span>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="<%= new_user_list_path(current_user) %>">Add a list</a>
-            </li>
-            <li>
-              <a href="<%= new_user_task_path(current_user) %>">Add a task</a>
-            </li>
-          </ul>
-        </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-            </ul>
-          </li>
-        <% else %>
-          <li><a href="<%= new_user_session_path %>">Sign In</a></li>
-          <li><a href="<%= new_user_registration_path %>">Sign Up</a></li>
-        <% end %>
-      </ul>
+      <%= render 'layouts/nav_left' %>
+      <%= render 'layouts/nav_right' %>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
