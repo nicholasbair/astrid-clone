@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
   has_many :deadlines, :through => :lists
   has_many :tasks, :through => :lists
 
-  validates :username, :presence => true
-
   def self.most_completed_tasks
     results = self.joins(:lists).where(lists: { status: "complete" }).limit(5).group("lists.user_id").count
     self.parse_results(results)
