@@ -1,6 +1,6 @@
-Hello from most completed tasks
-<br>
-
-<% @most_completed.each.with_index do |item, index| %>
-  <%= index + 1 %>. <%= item[:user].email %> - <%= item[:quantity] %> <br>
+<%= form_wrapper do %>
+  <h2>Leader Board for Completed Tasks</h2>
+  <% @most_completed.each.with_index do |item, index| %>
+    <%= index + 1 %>. <%= item[:user].email %> - <%= item[:quantity] %> <br>
+  <% end %>
 <% end %>
