@@ -15,7 +15,7 @@ See [spec](SPEC.md) for project requirements.
 5. Update .env with required keys/tokens, use [sample dotenv](dotenv_sample.txt) as guide
 4. $ bundle
 5. $ rails s
-6. In another terminal, CD into project root and $ ./bin/delayed_job run
+6. In another terminal, CD into project root and $ rake jobs:work
 7. Open browser to url provided in console (probably localhost:3000)
 
 ## Contributing
