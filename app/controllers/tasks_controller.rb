@@ -8,6 +8,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    redirect_to user_tasks_path(current_user) unless @task
   end
 
   def new

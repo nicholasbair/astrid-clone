@@ -11,6 +11,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    redirect_to user_lists_path(current_user) unless @list
   end
 
   def new
