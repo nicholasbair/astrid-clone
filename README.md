@@ -19,7 +19,7 @@ See [spec](SPEC.md) for project requirements.
 7. Open browser to url provided in console (probably localhost:3000)
 
 ## Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/nicholasbair/dogtracker.
+Bug reports and pull requests are welcome on GitHub at https://github.com/nicholasbair/astrid-clone.
 
 ## License
 The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
