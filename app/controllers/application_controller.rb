@@ -8,11 +8,7 @@ class ApplicationController < ActionController::Base
     user_lists_path(current_user)
   end
 
-  # Authorize user
-  # Does the current_user match the user_id param?
-  # Does the current_user 'own' the resource it is trying to access?
-  def authorize_user
-    # binding.pry
+  def authorize_user!
     user_not_authorized unless params_match_current_user?
   end
 

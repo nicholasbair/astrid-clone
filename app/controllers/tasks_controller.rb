@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :authorize_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_lists, only: [:new, :edit, :create]
 
