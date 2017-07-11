@@ -1,5 +1,7 @@
 <%= f.fields_for :deadline, @deadline do |d| %>
   <%= d.label :time %> <br>
-  <%= d.datetime_local_field :time, class: 'form-control' %>
+  <%= d.datetime_local_field :time, class: 'form-control' %> <br>
+  <%= d.label 'Reminder (minutes)' %> <br>
+  <%= d.number_field :reminder_interval, class: 'form-control' %>
   <%= d.hidden_field :time_zone, :value => current_user.time_zone %>
 <% end %>

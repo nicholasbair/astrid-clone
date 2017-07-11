@@ -60,6 +60,10 @@ class ListsController < ApplicationController
 
     def set_error
       flash[:error] = @list.errors.full_messages[0]
+
+      if @list.deadline.errors
+        flash[:error] += ": #{@list.deadline.errors.full_messages[0]}"
+      end
     end
 
     def set_list
@@ -67,7 +71,7 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:title, :deadline_attributes => [:time, :time_zone], :tasks_attributes => [:content])
+      params.require(:list).permit(:title, :deadline_attributes => [:time, :reminder_interval, :time_zone], :tasks_attributes => [:content])
     end
 
 end

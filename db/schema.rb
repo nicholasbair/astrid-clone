@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708164803) do
+ActiveRecord::Schema.define(version: 20170711170744) do
 
   create_table "deadlines", force: :cascade do |t|
     t.integer  "list_id"
     t.datetime "time"
     t.string   "time_zone"
+    t.integer  "reminder_interval"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|

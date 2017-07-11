@@ -7,6 +7,7 @@ class List < ActiveRecord::Base
 
   validates :title, :presence => true
   validates :title, :uniqueness => { :scope => :user }
+  validates_associated :deadline
 
   def tasks_attributes=(tasks_attributes)
     tasks_attributes.values.each do |task_attribute|
@@ -15,7 +16,7 @@ class List < ActiveRecord::Base
   end
 
   def deadline_attributes=(deadline_attributes)
-    if !deadline_attributes[:time].empty?
+    if deadline_attributes[:time].present?
       self.deadline = Deadline.create(parse_time_attributes(deadline_attributes))
     end
   end
