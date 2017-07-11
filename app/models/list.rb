@@ -30,14 +30,14 @@ class List < ActiveRecord::Base
 
   def check_status
     case
+    when self.tasks.size == 1
+      self.status = self.tasks.first.status
     when self.tasks.all? { |task| task.status == "incomplete" }
       self.status = "incomplete"
     when self.tasks.all? { |task| task.status == "complete" }
       self.status = "complete"
     when self.tasks.any? { |task| task.status == "complete" || task.status == "in_progress" }
       self.status = "in_progress"
-    when self.tasks.size == 1
-      self.status = self.tasks.first.status
     end
 
     self.save
