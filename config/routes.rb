@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
-  get 'users/most_completed_tasks', to: 'users#most_completed_tasks'
+  get 'users/most_completed_tasks', to: 'users/users#most_completed_tasks'
 end
