@@ -61,8 +61,8 @@ class ListsController < ApplicationController
     def set_error
       flash[:error] = @list.errors.full_messages[0]
 
-      if @list.deadline.errors
-        flash[:error] += ": #{@list.deadline.errors.full_messages[0]}"
+      if @list.deadline
+        flash[:error] += ": #{@list.deadline.errors.full_messages[0]}" unless @list.deadline.errors.empty?
       end
     end
 
