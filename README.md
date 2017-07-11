@@ -2,7 +2,7 @@
 
 Welcome to Astrid-Clone, a Rails task manager web app, with Twilio SMS reminders.
 
-<!-- Insert GIF here -->
+![astrid4](https://user-images.githubusercontent.com/8889403/28085388-9dd9474e-6649-11e7-968b-006667ab700f.gif)
 
 ## Project goals
 See [spec](SPEC.md) for project requirements.
