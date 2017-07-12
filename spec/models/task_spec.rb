@@ -27,19 +27,6 @@ RSpec.describe Task, type: :model do
       expect(@task2.errors.size).to eq(1)
     end
 
-    it "content is unique in the scope of the parent list" do
-      @task2 = @list.tasks.build(content: 'something something task')
-      @task2.save
-      expect(@task2.errors.size).to eq(1)
-    end
-
-    it "must have a list_id" do
-      @task2 = Task.new
-      @task2.content = "important task"
-      @task2.save
-      expect(@task2.errors.size).to eq(1)
-    end
-
   end
 
   it "defaults to incomplete" do
