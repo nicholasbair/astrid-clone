@@ -6,9 +6,7 @@
     </a>
   </h1>
   <%= render_deadline(@list) %>
-  <ul>
-    <%= render partial: "task", collection: @list.tasks %>
-  </ul>
+  <ul><%= render partial: "task", collection: @list.tasks %></ul>
 
   <%= form_for [current_user, @list] do |f| %>
     <%= render_add_task(f) %>

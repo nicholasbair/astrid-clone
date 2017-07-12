@@ -6,12 +6,8 @@
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-      <li>
-        <a href="<%= new_user_list_path(current_user) %>">Add a list</a>
-      </li>
-      <li>
-        <a href="<%= new_user_task_path(current_user) %>">Add a task</a>
-      </li>
+      <li><%= link_to "Add a list", new_user_list_path(current_user) %></li>
+      <li><%= link_to "Add a task", new_user_task_path(current_user) %></li>
     </ul>
   </li>
     <li class="dropdown">
@@ -24,7 +20,7 @@
       </ul>
     </li>
   <% else %>
-    <li><a href="<%= new_user_session_path %>">Sign In</a></li>
-    <li><a href="<%= new_user_registration_path %>">Sign Up</a></li>
+    <li><%= link_to "Sign In", new_user_session_path %></li>
+    <li><%= link_to "Sign Up", new_user_registration_path %></li>
   <% end %>
 </ul>
