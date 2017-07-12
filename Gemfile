@@ -63,19 +63,14 @@ gem 'active_link_to'
 # end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'pry'
 end
 
 group :test do
-  gem 'capybara'
   gem 'database_cleaner'
-  gem 'launchy'
   gem 'guard-rspec'
 end
 
